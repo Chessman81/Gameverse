@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image with Description</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 80vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: black;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 50px;
+            height: 35px;
+            padding-left: 2250px;
+            background-color: rgba(18, 17, 17, 0.5);
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+            padding-left: 800px;
+        }
+        .search-container input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 300px;
+        }
+        .search-container button[type="submit"] {
+            padding: 8px 15px;
+            background-color: #04621f;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .search-container button[type="submit"]:hover {
+            background-color: #034609;
+        }
+        .nav-links ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links ul li {
+            margin: 0 15px;
+        }
+        .nav-links ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80%;
+            max-width: 1200px;
+            margin-top: 80px; /* Adjusted margin to avoid overlapping with header */
+        }
+        .image-box-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .image-box, .additional-box, .description-box {
+            background-color: #050505;
+            border-radius: 10px;
+            padding: 20px;
+            color: #faf5f5;
+        }
+        .image-box, .additional-box {
+            flex: 1;
+        }
+        .image-box {
+            margin-right: 20px;
+        }
+        .additional-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .description-box {
+            width: 100%;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .center-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .description h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-decoration: underline;
+        }
+        .description p {
+            margin: 10px 0;
+        }
+        .buy-button {
+            background-color: #108e53;
+            color: #faf5f5;
+            padding: 10px 20px;
+            width: 300px;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: -px;
+        }
+        .buy-button:hover {
+           background-color: #0c4507;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+    <div class="header">
+        
+        <div class="nav-links">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="library.html">Library</a></li>
+                <li><a href="account.html">Account</a></li>
+                <li><a href="chatbox.html">Chat</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="image-box-container">
+            <div class="image-box">
+                <img src="ac2.jpg" alt="Description of the image" class="center-image">
+            </div>
+            <div class="additional-box">
+                <div>
+                    <h2>REVIEW</h2>
+                    <p>RECENT REVIEWS:
+                        Mixed (1,002)
+                        <p> ALL REVIEWS:
+                        Mostly Positive (20,698)
+                        <p>  RELEASE DATE:
+                        6 Dec, 2022
+                        <p>  DEVELOPER:
+                        Ubisoft Montreal
+                        <p> PUBLISHER:
+                        Ubisoft</p>
+                </div>
+                <div>
+                    <h3>Price : RS 2999</h3>
+                </div>
+                <button class="buy-button">PAY NOW</button>
+            </div>
+        </div>
+        <div class="description-box">
+            <div class="description">
+                <h2>ABOUT THIS GAME</h2>
+                <p>Become Eivor, a legendary Viking raider on a quest for glory.
+
+                    <p>  - Lead epic Viking raids against Saxon troops and fortresses.
+                        <p>  - Relive the visceral fighting style of the Vikings as you dual-wield powerful weapons.
+                            <p>  - Challenge yourself with the most varied collection of enemies ever in Assassin's Creed.
+                                <p>  - Shape the growth of your character and your clan's settlement with every choice you make.
+                                    <p>  - Explore a Dark Age open world, from the harsh shores of Norway to the beautiful kingdoms of England.
+                    
+                    Includes the Forgotten Saga, a FREE new rogue-lite game mode for all Assassin's Creed® Valhalla players.</p>
+                <h2>SYSTEM REQUIREMENTS</h2>
+                <p>MINIMUM:</p>
+                <p>Requires a 64-bit processor and operating system
+                    <p> OS: Windows 10 (versions 64 bits uniquement)
+                        <p>  Processor: AMD Ryzen 3 1200 3.1 GHz / Intel Core i5-4460 3.2 GHz
+                            <p>  Memory: 8 GB RAM
+                                <p>  Graphics: AMD R9 380 /NVIDIA GeForce GTX 960
+                                    <p>  DirectX: Version 12
+                    <p>  Storage: 160 GB available space</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            var apiKey = "rzp_test_mcMsI3DLnPrMFY";
+
+            $('.buy-button').on('click', function (e) {
+                e.preventDefault();
+                var price = "RS 2999"; // Price of the game
+                var options = {
+                    key: apiKey,
+                    amount: parseInt(price.split(" ")[1]) * 100, // Convert price to paise
+                    currency: "INR",
+                    name: "GAMEVERSE",
+                    description: "Into the gaming world",
+                    image: "",
+                    prefill: {
+                        name: "JAHNAVI PASUMARTY",
+                        email: "Jahnavipasumarty@gmail.com", // Corrected email address
+                    },
+                    theme: {
+                        color: "#001F3F"
+                    },
+                    handler: function (response) {
+                        console.log(response);
+                        // Send payment data to PHP file
+                        $.ajax({
+                            url: "payment.php",
+                            type: "POST",
+                            data: {
+                                userId: "1", // Replace with the actual user ID
+                                paymentId: response.razorpay_payment_id,
+                                transactionId: response.razorpay_payment_id,
+                                amount: parseInt(price.split(" ")[1])
+                            },
+                            success: function (data) {
+                                console.log(data); // Log response from server
+                                // Redirect to payment success page
+                                var paymentSuccessPage = window.open('last.html', '_blank', 'height=600,width=800');
+                                paymentSuccessPage.onload = function() {
+                                    // Generate QR code or perform other actions
+                                };
+                            },
+                            error: function (xhr, status, error) {
+                                console.error(xhr.responseText); // Log error message
+                                alert("Error processing payment. Please try again later.");
+                            }
+                        });
+                    }
+                };
+                var rzp = new Razorpay(options);
+                rzp.open();
+            });
+        });
+    </script>
+</body>
+</html>

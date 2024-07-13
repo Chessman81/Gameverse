@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamer Profile</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #020202;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 50%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #1c1c1c;
+            box-shadow: #02441f;
+            border-radius: 10px;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .profile-picture {
+            border-radius: 10%;
+            width: 500px;
+            height: 170px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .profile-info {
+            text-align: left;
+            color: #faf5f5;
+            width: 100%;
+        }
+
+        .profile-info p {
+            margin: 10px 0;
+        }
+
+        .profile-info input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #02441f;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="profile.webp" alt="Profile Picture" class="profile-picture">
+            <div class="profile-info">
+                <p class="first-name">Name:</p>
+                <input type="text" placeholder="Enter your Name" class="input-firstname" readonly>
+                <p class="last-name">Username:</p>
+                <input type="text" placeholder="Enter your Username" class="input-lastname" readonly>
+                <p class="username">MailID:</p>
+                <input type="text" placeholder="Enter your MailID" class="input-username" readonly>
+                <p class="mobile-text">Mobile Number:</p>
+                <input type="text" placeholder="Enter your Mobile Number" class="input-mobile" readonly>
+            </div>
+        </div>
+    </div>
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        async function fetchUserData() {
+            const username = getQueryParam('username');
+
+            if (!username) {
+                console.error('Username query parameter not found');
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/user?username=${username}`);
+                const user = await response.json();
+
+                if (response.ok) {
+                    document.querySelector('.input-firstname').value = user.Name;
+                    document.querySelector('.input-lastname').value = user.Username;
+                    document.querySelector('.input-username').value = user.email;
+                    document.querySelector('.input-mobile').value = user.phoneNumber;
+                } else {
+                    console.error('Error fetching user data:', user.message);
+                }
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        }
+
+        window.onload = fetchUserData;
+    </script>
+</body>
+</html>
